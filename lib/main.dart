@@ -3,11 +3,11 @@ import 'package:myapp/input_fields/date_of_illness.dart';
 import 'package:myapp/input_fields/reason_of_absence.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyAppology());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyAppology extends StatelessWidget {
+  const MyAppology({super.key});
 
   // This widget is the root of your application.
   @override
@@ -18,21 +18,21 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'School appology'),
+      home: const StartingPage(title: 'School appology'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class StartingPage extends StatefulWidget {
+  const StartingPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<StartingPage> createState() => _StartingPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _StartingPageState extends State<StartingPage> {
   int _counter = 0;
 
   void _incrementCounter() {
