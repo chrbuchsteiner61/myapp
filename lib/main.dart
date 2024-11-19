@@ -1,6 +1,10 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:myapp/input_fields/date_of_illness.dart';
 import 'package:myapp/input_fields/reason_of_absence.dart';
+import 'package:myapp/constants.dart';
+import 'package:myapp/appology_page.dart';
 
 void main() {
   runApp(const MyAppology());
@@ -33,31 +37,43 @@ class StartingPage extends StatefulWidget {
 }
 
 class _StartingPageState extends State<StartingPage> {
-  int _counter = 0;
-
   void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, String> allElements = HashMap();
+    allElements['parents'] = "Tanja Birkholz und Christian Buchsteiner";
+    allElements['homeAdress'] = "Wacholderweg 15a, 61440 Oberursel";
+    allElements['communication'] =
+        "Tel. 01516 144 80 98, mail: chrbuchsteiner@gmail.com";
+    allElements['schoolAdress'] = "Gymnasium Oberursel";
+    allElements['teacher'] = "Frau Brendel";
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: const Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            DateOfIllness(aDate: '12.12.2023'),
-            ReasonOfAbsence(reason: 'Der Grund'),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          DateOfIllness(aDate: '12.12.2023'),
+          ReasonOfAbsence(reason: 'Der Grund'),
+          FloatingActionButton(onPressed: () async {
+            String aRoutine = aFunction();
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => AppologyPage(
+                  allStrokes: aControllerFunction(),
+                  allElements: allElements,
+                ),
+              ),
+            );
+          } //
+              ),
+        ],
       ),
     );
   }

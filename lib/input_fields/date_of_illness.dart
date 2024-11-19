@@ -7,6 +7,11 @@ class DateOfIllness extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(aDate);
+    return const TextField(
+      decoration: InputDecoration(
+    border: OutlineInputBorder(),
+    hintText: 'Enter a search term',
+  ),
+    );
   }
 }
