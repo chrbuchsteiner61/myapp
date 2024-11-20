@@ -51,6 +51,9 @@ class _StartingPageState extends State<StartingPage> {
     allElements['schoolAdress'] = "Gymnasium Oberursel";
     allElements['teacher'] = "Frau Brendel";
 
+    allElements['appologyDate'] = "12.12.24";
+    allElements['childName'] = "Tim Birkholz";
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -59,14 +62,15 @@ class _StartingPageState extends State<StartingPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          DateOfIllness(aDate: '12.12.2023'),
-          ReasonOfAbsence(reason: 'Der Grund'),
+          const DateOfIllness(aDate: "12.12.24"),
+          const ReasonOfAbsence(reason: "something"),
           FloatingActionButton(onPressed: () async {
-            String aRoutine = aFunction();
+            // allElements['appologyDate'] = getAppologyDate();
+            //  allElements['childName'] = getChildName();
+
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => AppologyPage(
-                  allStrokes: aControllerFunction(),
                   allElements: allElements,
                 ),
               ),

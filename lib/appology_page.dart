@@ -38,6 +38,10 @@ class AppologyPage extends StatelessWidget {
     pw.TextStyle formatH3 = const pw.TextStyle(
       fontSize: 14,
     );
+    pw.TextStyle formatB =  pw.TextStyle(
+      fontSize: 12.0, fontWeight: pw.FontWeight.bold,
+    );
+    
     pw.TextStyle formatP = const pw.TextStyle(
       fontSize: 12,
     );
@@ -52,13 +56,7 @@ class AppologyPage extends StatelessWidget {
           build: (context) {
             return pw.Column(
               children: [
-                pw.Container(
-                  alignment: pw.Alignment.centerLeft,
-                  child: pw.Text(
-                    toDay,
-                    style: formatH2,
-                  ),
-                ),
+                
                 pw.Container(
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Text(
@@ -76,7 +74,8 @@ class AppologyPage extends StatelessWidget {
                 pw.Container(
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Text(
-                    allElements['communications']!,
+                    //allElements['communication']!,
+                    'something',
                     style: formatH3,
                   ),
                 ),
@@ -92,6 +91,48 @@ class AppologyPage extends StatelessWidget {
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Text(
                     allElements['teacher']!,
+                    style: formatP,
+                  ),
+                ),
+                pw.Container(
+                  alignment: pw.Alignment.centerRight,
+                  child: pw.Text(
+                    toDay,
+                    style: formatH2,
+                  ),
+                ),
+                pw.Container(
+                  alignment: pw.Alignment.centerLeft,
+                  child: pw.Text(
+                    '${allElements['titleRow']!} ${allElements['appologyDate']!}',
+                    style: formatB,
+                  ),
+                ),
+                pw.Container(
+                  alignment: pw.Alignment.centerLeft,
+                  child: pw.Text(
+                    '${allElements['salutation']!} ${allElements['teacher']!}',
+                    style: formatP,
+                  ),
+                ),
+                pw.Container(
+                  alignment: pw.Alignment.centerLeft,
+                  child: pw.Text(
+                    '${allElements['reasonTextPart1']!} ${allElements['nameChild']!} ${allElements['reasonTextPart2']!}',
+                    style: formatP,
+                  ),
+                ),
+                pw.Container(
+                  alignment: pw.Alignment.centerLeft,
+                  child: pw.Text(
+                    allElements['pleaseExcuse']!,
+                    style: formatP,
+                  ),
+                ),
+                 pw.Container(
+                  alignment: pw.Alignment.centerLeft,
+                  child: pw.Text(
+                    allElements['endOfLetter']!,
                     style: formatP,
                   ),
                 ),
