@@ -33,21 +33,22 @@ class AppologyPage extends StatelessWidget {
   Future<Uint8List> generatePdf(Map<String, String> allElements) async {
     // text formats
     pw.TextStyle formatH2 = const pw.TextStyle(
-      fontSize: 16,
-    );
-    pw.TextStyle formatH3 = const pw.TextStyle(
       fontSize: 14,
     );
-    pw.TextStyle formatB =  pw.TextStyle(
-      fontSize: 12.0, fontWeight: pw.FontWeight.bold,
+    pw.TextStyle formatH3 = const pw.TextStyle(
+      fontSize: 13,
     );
-    
+    pw.TextStyle formatB = pw.TextStyle(
+      fontSize: 12.0,
+      fontWeight: pw.FontWeight.bold,
+    );
     pw.TextStyle formatP = const pw.TextStyle(
       fontSize: 12,
     );
 
     final DateFormat formatter = DateFormat('d.MM.yyyy');
     final String toDay = formatter.format(DateTime.now());
+    const double distance = 6.0;
 
     final pdf = pw.Document();
     pdf.addPage(
@@ -56,30 +57,28 @@ class AppologyPage extends StatelessWidget {
           build: (context) {
             return pw.Column(
               children: [
-                
                 pw.Container(
-                  alignment: pw.Alignment.centerLeft,
+                  alignment: pw.Alignment.center,
                   child: pw.Text(
                     allElements['parents']!,
                     style: formatH2,
                   ),
                 ),
                 pw.Container(
-                  alignment: pw.Alignment.centerLeft,
+                  alignment: pw.Alignment.center,
                   child: pw.Text(
                     allElements['homeAdress']!,
                     style: formatH3,
                   ),
                 ),
                 pw.Container(
-                  alignment: pw.Alignment.centerLeft,
+                  alignment: pw.Alignment.center,
                   child: pw.Text(
-                    //allElements['communication']!,
-                    'something',
+                    allElements['communication']!,
                     style: formatH3,
                   ),
                 ),
-                pw.SizedBox(width: 200, height: 40),
+                pw.SizedBox(width: 200, height: 140),
                 pw.Container(
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Text(
@@ -94,11 +93,12 @@ class AppologyPage extends StatelessWidget {
                     style: formatP,
                   ),
                 ),
+                pw.SizedBox(width: 200, height: 200),
                 pw.Container(
                   alignment: pw.Alignment.centerRight,
                   child: pw.Text(
                     toDay,
-                    style: formatH2,
+                    style: formatP,
                   ),
                 ),
                 pw.Container(
@@ -108,17 +108,19 @@ class AppologyPage extends StatelessWidget {
                     style: formatB,
                   ),
                 ),
+                pw.SizedBox(height: distance),
                 pw.Container(
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Text(
-                    '${allElements['salutation']!} ${allElements['teacher']!}',
+                    '${allElements['salutation']!} ${allElements['teacher']!}${','}',
                     style: formatP,
                   ),
                 ),
+                pw.SizedBox(height: distance),
                 pw.Container(
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Text(
-                    '${allElements['reasonTextPart1']!} ${allElements['nameChild']!} ${allElements['reasonTextPart2']!}',
+                    '${allElements['reasonTextPart1']!} ${allElements['childName']!} ${allElements['reasonTextPart2']!}',
                     style: formatP,
                   ),
                 ),
@@ -129,7 +131,8 @@ class AppologyPage extends StatelessWidget {
                     style: formatP,
                   ),
                 ),
-                 pw.Container(
+                pw.SizedBox(height: distance),
+                pw.Container(
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Text(
                     allElements['endOfLetter']!,

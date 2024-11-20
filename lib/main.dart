@@ -1,14 +1,16 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:myapp/input_fields/date_of_illness.dart';
-import 'package:myapp/input_fields/reason_of_absence.dart';
-import 'package:myapp/constants.dart';
+import 'package:myapp/input_fields/name_of_child.dart';
 import 'package:myapp/appology_page.dart';
 
 void main() {
   runApp(const MyAppology());
 }
+
+var logger = Logger();
 
 class MyAppology extends StatelessWidget {
   const MyAppology({super.key});
@@ -22,7 +24,7 @@ class MyAppology extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const StartingPage(title: 'School appology'),
+      home: const StartingPage(title: 'Entschuldigung für die Schule'),
     );
   }
 }
@@ -37,7 +39,7 @@ class StartingPage extends StatefulWidget {
 }
 
 class _StartingPageState extends State<StartingPage> {
-  void _incrementCounter() {
+  void getChildName() {
     setState(() {});
   }
 
@@ -51,8 +53,19 @@ class _StartingPageState extends State<StartingPage> {
     allElements['schoolAdress'] = "Gymnasium Oberursel";
     allElements['teacher'] = "Frau Brendel";
 
+    allElements['titleRow'] = "Entschulding für den";
+    allElements['salutation'] = "Sehr geehrte Frau";
+    allElements['reasonTextPart1'] = "unser Sohn";
+    allElements['reasonTextPart2'] =
+        "war krank und konnte nicht am Unterricht teilnehmen.";
+    allElements['pleaseExcuse'] =
+        "Wir bitten Sie, sein Fehlen zu entschuldigen.";
+    allElements['endOfLetter'] = "Mit freundlichen Grüßen";
+
     allElements['appologyDate'] = "12.12.24";
     allElements['childName'] = "Tim Birkholz";
+
+    // logger.d(allElements);
 
     return Scaffold(
       appBar: AppBar(
@@ -63,20 +76,22 @@ class _StartingPageState extends State<StartingPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const DateOfIllness(aDate: "12.12.24"),
-          const ReasonOfAbsence(reason: "something"),
-          FloatingActionButton(onPressed: () async {
-            // allElements['appologyDate'] = getAppologyDate();
-            //  allElements['childName'] = getChildName();
+          const NameOfChild(aName: "something"),
+          FloatingActionButton(
+            onPressed: () async {
+              // allElements['appologyDate'] = getAppologyDate();
+              //  allElements['childName'] = getChildName();
 
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => AppologyPage(
-                  allElements: allElements,
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => AppologyPage(
+                    allElements: allElements,
+                  ),
                 ),
-              ),
-            );
-          } //
-              ),
+              );
+            },
+            child: const Icon(Icons.print), //
+          ),
         ],
       ),
     );
