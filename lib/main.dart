@@ -3,8 +3,8 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:myapp/input_fields/date_of_illness.dart';
-import 'package:myapp/input_fields/name_of_child.dart';
 import 'package:myapp/appology_page.dart';
+import 'package:myapp/input_fields/select_child.dart';
 
 void main() {
   runApp(const MyAppology());
@@ -39,9 +39,9 @@ class StartingPage extends StatefulWidget {
 }
 
 class _StartingPageState extends State<StartingPage> {
-  void getChildName() {
-    setState(() {});
-  }
+  // State variable to hold the selected value
+  String? selectedChild = "Tim Birkholz";
+  String? appologyPeriode = "12.12.2023";
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class _StartingPageState extends State<StartingPage> {
     allElements['schoolAdress'] = "Gymnasium Oberursel";
     allElements['teacher'] = "Frau Brendel";
 
-    allElements['titleRow'] = "Entschulding für den";
+    allElements['titleRow'] = "Entschuldigung ";
     allElements['salutation'] = "Sehr geehrte Frau";
     allElements['reasonTextPart1'] = "unser Sohn";
     allElements['reasonTextPart2'] =
@@ -62,8 +62,8 @@ class _StartingPageState extends State<StartingPage> {
         "Wir bitten Sie, sein Fehlen zu entschuldigen.";
     allElements['endOfLetter'] = "Mit freundlichen Grüßen";
 
-    allElements['appologyDate'] = "12.12.24";
-    allElements['childName'] = "Tim Birkholz";
+    allElements['appologyDate'] = appologyPeriode!;
+    allElements['childName'] = selectedChild!;
 
     // logger.d(allElements);
 
@@ -75,12 +75,25 @@ class _StartingPageState extends State<StartingPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const DateOfIllness(aDate: "12.12.24"),
-          const NameOfChild(aName: "something"),
+          DateOfIllness(
+            onSubmitted: (value) {
+              setState(() {
+                appologyPeriode = value; // Update state with periode input
+              });
+            },
+          ),
+          SelectChild(
+            selectedValue: selectedChild,
+            onChanged: (value) {
+              setState(() {
+                selectedChild = value;
+              });
+            },
+          ),
           FloatingActionButton(
             onPressed: () async {
               // allElements['appologyDate'] = getAppologyDate();
-              //  allElements['childName'] = getChildName();
+              allElements['childName'] = selectedChild!;
 
               Navigator.of(context).push(
                 MaterialPageRoute(
