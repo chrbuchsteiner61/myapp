@@ -22,12 +22,20 @@ class DateOfIllnessState extends State<DateOfIllness> {
             child: Text("Entschuldigungszeitraum",
                 style: Theme.of(context).textTheme.displayMedium!),
           ),
-          TextField(
-            style: Theme.of(context).textTheme.displayMedium!,
-            controller: _controller,
-            decoration: const InputDecoration(
-              labelText: '"für den ..." oder "für die Zeit von bis"',
-              border: OutlineInputBorder(),
+          const SizedBox(height: 16.0,),
+          Align(
+              alignment: Alignment.centerLeft,
+              child:SizedBox(
+            width: 400.0,
+            child:  TextField(
+                style: Theme.of(context).textTheme.displayMedium!,
+                controller: _controller,
+                decoration: InputDecoration(
+                  labelText: '"für den ..." oder "für die Zeit von bis"',
+                  labelStyle: Theme.of(context).textTheme.displaySmall!,
+                  border: const OutlineInputBorder(),
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 16),

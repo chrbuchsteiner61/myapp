@@ -27,12 +27,12 @@ class SelectChild extends StatelessWidget {
             DropdownMenuItem(
               value: 'Tim Birkholz',
               child: Text('Tim',
-                  style: Theme.of(context).textTheme.displayMedium!),
+                  style: Theme.of(context).textTheme.displaySmall!),
             ),
             DropdownMenuItem(
               value: 'Nils Birkholz',
               child: Text('Nils',
-                  style: Theme.of(context).textTheme.displayMedium!),
+                  style: Theme.of(context).textTheme.displaySmall!),
             ),
           ],
           onChanged: onChanged,
