@@ -22,12 +22,14 @@ class DateOfIllnessState extends State<DateOfIllness> {
             child: Text("Entschuldigungszeitraum",
                 style: Theme.of(context).textTheme.displayMedium!),
           ),
-          const SizedBox(height: 16.0,),
+          const SizedBox(
+            height: 16.0,
+          ),
           Align(
-              alignment: Alignment.centerLeft,
-              child:SizedBox(
-            width: 400.0,
-            child:  TextField(
+            alignment: Alignment.centerLeft,
+            child: SizedBox(
+              width: 300.0,
+              child: TextField(
                 style: Theme.of(context).textTheme.displayMedium!,
                 controller: _controller,
                 decoration: InputDecoration(
@@ -43,6 +45,14 @@ class DateOfIllnessState extends State<DateOfIllness> {
             onPressed: () {
               widget.onSubmitted(_controller.text); // Send value to parent
             },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            ),
             child: const Text('eingeben'),
           ),
         ],
