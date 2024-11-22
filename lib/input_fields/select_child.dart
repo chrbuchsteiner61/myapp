@@ -15,20 +15,24 @@ class SelectChild extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Row(children: [
-        const SizedBox(width: 30.0),
-        const Text("Kind auswählen:"),
+        const SizedBox(width: 20.0),
+        Text("Kind auswählen:",
+            style: Theme.of(context).textTheme.displayMedium!),
         const SizedBox(width: 10.0),
         DropdownButton<String>(
           value: selectedValue,
-          hint: const Text('Dein Kind auswählen'),
-          items: const [
+          hint: Text('Dein Kind auswählen',
+              style: Theme.of(context).textTheme.displayMedium!),
+          items: [
             DropdownMenuItem(
               value: 'Tim Birkholz',
-              child: Text('Tim'),
+              child: Text('Tim',
+                  style: Theme.of(context).textTheme.displayMedium!),
             ),
             DropdownMenuItem(
               value: 'Nils Birkholz',
-              child: Text('Nils'),
+              child: Text('Nils',
+                  style: Theme.of(context).textTheme.displayMedium!),
             ),
           ],
           onChanged: onChanged,

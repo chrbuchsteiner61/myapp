@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
 import 'package:myapp/input_fields/date_of_illness.dart';
 import 'package:myapp/appology_page.dart';
@@ -23,6 +24,32 @@ class MyAppology extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
+        // Define the default brightness and colors.
+    
+
+    // Define the default `TextTheme`. Use this to specify the default
+    // text styling for headlines, titles, bodies of text, and more.
+    textTheme: TextTheme(
+     
+      // ···
+      titleLarge: GoogleFonts.notoSans(
+        fontSize: 16,
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w500,
+        color: Colors.black,
+      ),
+      bodyMedium: GoogleFonts.notoSans(
+        fontSize: 14,
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w400,
+        color: Colors.blue,
+      ),
+      bodySmall: GoogleFonts.notoSans(),
+      displayMedium: GoogleFonts.notoSans(fontSize: 16,
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w400,
+        color: Colors.blue, ),
+    ),
       ),
       home: const StartingPage(title: 'Entschuldigung für die Schule'),
     );
@@ -53,7 +80,7 @@ class _StartingPageState extends State<StartingPage> {
     allElements['schoolAdress'] = "Gymnasium Oberursel";
     allElements['teacher'] = "Frau Brendel";
 
-    allElements['titleRow'] = "Entschuldigung ";
+    allElements['titleRow'] = "Entschuldigung";
     allElements['salutation'] = "Sehr geehrte Frau";
     allElements['reasonTextPart1'] = "unser Sohn";
     allElements['reasonTextPart2'] =

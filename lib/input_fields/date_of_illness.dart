@@ -17,11 +17,16 @@ class DateOfIllnessState extends State<DateOfIllness> {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text("Entschuldigungszeitraum",
+                style: Theme.of(context).textTheme.displayMedium!),
+          ),
           TextField(
+            style: Theme.of(context).textTheme.displayMedium!,
             controller: _controller,
             decoration: const InputDecoration(
-              labelText:
-                  'Entschuldigungszeitraum für den oder für die Zeit von bis',
+              labelText: '"für den ..." oder "für die Zeit von bis"',
               border: OutlineInputBorder(),
             ),
           ),
